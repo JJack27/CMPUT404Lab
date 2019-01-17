@@ -4,8 +4,8 @@ HOST = "localhost"
 PORT = 8001
 BUFFER_SIZE = 1024
 
-payload = """GET / HTTP/1.0
-Host: www.google.com
+payload = """GET / HTTP/1.1
+Host: www.google.com\n
 """
 
 
@@ -24,7 +24,7 @@ def connect_socket(addr):
             if not data:
                break
             full_data += data
-
+        print("=====")
         print(full_data)
         
     except:

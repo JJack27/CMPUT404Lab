@@ -37,11 +37,15 @@ def main():
                            break
                         full_data += data
                     #sending to google
+                    print(full_data)
                     proxy_end.sendall(full_data)
+                    proxy_end.shutdown(socket.SHUT_WR)
                     #grab data from google
                     full_data_from_google = b""
                     while True:
                         data = proxy_end.recv(BUFFER_SIZE)
+                        print("=====")
+                        print(data)
                         if not data:
                             break
                         full_data_from_google += data
