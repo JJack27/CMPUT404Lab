@@ -1,3 +1,4 @@
+# echo "Foobar" | nc localhost 8001
 import socket
 
 def main():
@@ -9,21 +10,25 @@ def main():
     server.bind(address)
     server.listen(5)
 
-    while(True):
-        client, _ = server.accept()
-        print(client)
-        response = "".encode()
-        print("connected")
+    try:
         while(True):
-            data = client.recv(1024)
-            if not data:
-                break
-            print("Received data: ",data.decode().strip())
-            response += data  
-        client.send(response)
-        client.close() 
+            client, _ = server.accept()
+            response = ""
+            while(True):
+                data = client.recv(1024)
+                if not data:
+                    break
+                message = data.decode().strip()
+                print("Received data: ",message)
+                response += message
+            response += "\n"
+            client.sendall(response.encode())
+            client.close() 
+    except Exception as e:
+        print(e)
+        server.close()
+        pass
     server.close()
     
 
 main()
-
