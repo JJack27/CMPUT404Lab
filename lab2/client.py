@@ -12,7 +12,7 @@ Host: {HOST}
 
 
 def connect_socket(addr):
-    (family, sockettype, proto, connoname, sockaddr) = addr
+    (family, sockettype, proto, _, sockaddr) = addr
     try:
         s = socket.socket(family, sockettype, proto)
         s.connect(sockaddr)
