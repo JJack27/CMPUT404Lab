@@ -7,12 +7,15 @@ def main():
     address = (HOST, PORT)
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server.bind(address)
     server.listen(5)
 
     try:
         while(True):
-            client, _ = server.accept()
+            client, client_addr = server.accept()
+            print(client)
+            print(client_addr)
             response = ""
             while(True):
                 data = client.recv(1024)
