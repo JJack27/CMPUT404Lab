@@ -13,4 +13,7 @@
     - it returns two things. The first one is a socket data structure
     - The second one is the host and port of the incomming client.
 - Question 5
-    - 
+    - `recv()` returns the HTTP response that responed by the server. It contains to parts, header and the content.
+
+- Question 6
+    - https://github.com/JJack27/CMPUT404Lab/tree/master/lab2

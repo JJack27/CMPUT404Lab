@@ -1,6 +1,5 @@
 import socket
 
-
 payload = """GET / HTTP/1.1
 Host: www.google.com\n
 """
