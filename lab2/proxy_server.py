@@ -90,7 +90,7 @@ def main():
                 data = client.recv(1024)
                 if not data:
                     break
-                print("Received data: ",data)
+                print("Received requests: ",data)
                 response += data
 
             # transferring recevied data to google
